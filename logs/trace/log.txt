@@ -1,1 +1,6 @@
 2017/05/22 17:39:00 GET	/	Index	0s
+2017/05/22 20:40:46 Server started
+2017/05/22 20:43:52 GET	/	Index	0s
+2017/05/22 20:47:13 GET	/	Index	0s
+2017/05/22 20:49:35 Server started
+2017/05/22 20:49:41 GET	/	Index	0s

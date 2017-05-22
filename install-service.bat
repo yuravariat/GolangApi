@@ -1,1 +1,0 @@
-sc create GoPushApi binpath= "\"C:\Users\yurav\go\src\GoApi\GoApi.exe\"" start= "auto" DisplayName= "Go Push Api"  depend="Tcpip"
