@@ -1,0 +1,1 @@
+nssm install GoPushApi C:\Users\yurav\go\src\GoApi\build\GoApi.exe

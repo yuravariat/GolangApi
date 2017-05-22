@@ -1,0 +1,1 @@
+go build -o C:\Users\yurav\go\src\GoApi\build\GoApi.exe
