@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 	"time"
@@ -14,6 +15,14 @@ func Logger(inner http.Handler, name string) http.Handler {
 
 		log.Printf(
 			"%s\t%s\t%s\t%s",
+			r.Method,
+			r.RequestURI,
+			name,
+			time.Since(start),
+		)
+
+		fmt.Printf(
+			"%s\t%s\t%s\t%s\n",
 			r.Method,
 			r.RequestURI,
 			name,
