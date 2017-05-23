@@ -1,6 +1,64 @@
-2017/05/22 17:39:00 GET	/	Index	0s
-2017/05/22 20:40:46 Server started
-2017/05/22 20:43:52 GET	/	Index	0s
-2017/05/22 20:47:13 GET	/	Index	0s
-2017/05/22 20:49:35 Server started
-2017/05/22 20:49:41 GET	/	Index	0s
+2017/05/23 16:19:32 Server started
+2017/05/23 16:19:41 POST	/reciever	PushRecieve	41.0189ms	Headers=> | Connection : keep-alive | User-Agent : PostmanRuntime/3.0.11-hotfix.2 | Accept : */* | Content-Length : 9501704 | Accept-Encoding : gzip, deflate, sdch, br | Cache-Control : no-cache | Postman-Token : 3c4d7cb2-0c80-4297-a17c-ad9d78f2e961 | Content-Type : application/xml
+2017/05/23 16:22:39 POST	/reciever	PushRecieve	33ms	Headers=> | Content-Length : 9501704 | Cache-Control : no-cache | Content-Type : application/xml | Accept-Encoding : gzip, deflate, sdch, br | Content-Encoding : gzip | Accept : */* | Postman-Token : ff1d16db-a72c-4a6c-9c1a-22426a209b58 | User-Agent : PostmanRuntime/3.0.11-hotfix.2 | Connection : keep-alive
+2017/05/23 16:30:35 POST	/reciever	PushRecieve	501.2µs	Headers=> | Accept-Encoding : gzip, deflate, sdch, br | Content-Encoding : gzip | Content-Length : 70720 | Postman-Token : c2ee703b-8f94-4588-b7d2-fadba3d5c1ab | Content-Type : application/xml | User-Agent : PostmanRuntime/3.0.11-hotfix.2 | Accept : */* | Connection : keep-alive | Cache-Control : no-cache
+2017/05/23 16:33:39 Server started
+2017/05/23 16:33:51 http: panic serving 127.0.0.1:33674: runtime error: invalid memory address or nil pointer dereference
+goroutine 5 [running]:
+net/http.(*conn).serve.func1(0xc0420374a0)
+	C:/Go/src/net/http/server.go:1721 +0xd7
+panic(0x6e9fa0, 0x8a9ca0)
+	C:/Go/src/runtime/panic.go:489 +0x2dd
+compress/gzip.(*Reader).Close(0x0, 0x883d00, 0xc04200c680)
+	C:/Go/src/compress/gzip/gunzip.go:292 +0x29
+panic(0x6e9fa0, 0x8a9ca0)
+	C:/Go/src/runtime/panic.go:489 +0x2dd
+io/ioutil.readAll.func1(0xc04202b6e0)
+	C:/Go/src/io/ioutil/ioutil.go:30 +0x120
+panic(0x6e9fa0, 0x8a9ca0)
+	C:/Go/src/runtime/panic.go:489 +0x2dd
+compress/gzip.(*Reader).Read(0x0, 0xc042108000, 0x200, 0x200, 0x429b65, 0xc000000008, 0xc0420e6180)
+	C:/Go/src/compress/gzip/gunzip.go:247 +0x3e
+bytes.(*Buffer).ReadFrom(0xc04202b638, 0x24d0058, 0x0, 0xc042108000, 0x0, 0x200)
+	C:/Go/src/bytes/buffer.go:179 +0x167
+io/ioutil.readAll(0x24d0058, 0x0, 0x200, 0x0, 0x0, 0x0, 0x0, 0x0)
+	C:/Go/src/io/ioutil/ioutil.go:33 +0x157
+io/ioutil.ReadAll(0x24d0058, 0x0, 0x0, 0x24d0058, 0x0, 0xc000000030, 0x0)
+	C:/Go/src/io/ioutil/ioutil.go:42 +0x45
+GoApi/controllers.PushRecieve.func1(0xc042032300, 0x0, 0x0)
+	C:/Users/yurav/go/src/GoApi/controllers/push-reciever.go:33 +0x209
+GoApi/controllers.PushRecieve(0x887f40, 0xc0420fa000, 0xc042032300)
+	C:/Users/yurav/go/src/GoApi/controllers/push-reciever.go:43 +0x47
+net/http.HandlerFunc.ServeHTTP(0x756ca8, 0x887f40, 0xc0420fa000, 0xc042032300)
+	C:/Go/src/net/http/server.go:1942 +0x4b
+main.Logger.func1(0x887f40, 0xc0420fa000, 0xc042032300)
+	C:/Users/yurav/go/src/GoApi/logger.go:15 +0xd3
+net/http.HandlerFunc.ServeHTTP(0xc042046fc0, 0x887f40, 0xc0420fa000, 0xc042032300)
+	C:/Go/src/net/http/server.go:1942 +0x4b
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc042010460, 0x887f40, 0xc0420fa000, 0xc042032300)
+	C:/Users/yurav/go/src/github.com/gorilla/mux/mux.go:114 +0x113
+net/http.serverHandler.ServeHTTP(0xc04207a2c0, 0x887f40, 0xc0420fa000, 0xc042032100)
+	C:/Go/src/net/http/server.go:2568 +0x99
+net/http.(*conn).serve(0xc0420374a0, 0x888500, 0xc0420e6040)
+	C:/Go/src/net/http/server.go:1825 +0x619
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2668 +0x2d5
+2017/05/23 16:34:09 Server started
+2017/05/23 16:35:23 Server started
+2017/05/23 16:35:30 *errors.errorString gzip: invalid header
+C:/Go/src/net/http/server.go:1942 (0x5e50db)
+	HandlerFunc.ServeHTTP: f(w, r)
+C:/Users/yurav/go/src/GoApi/logger.go:15 (0x69f2b3)
+	Logger.func1: inner.ServeHTTP(w, r)
+C:/Go/src/net/http/server.go:1942 (0x5e50db)
+	HandlerFunc.ServeHTTP: f(w, r)
+C:/Users/yurav/go/src/github.com/gorilla/mux/mux.go:114 (0x628e63)
+	(*Router).ServeHTTP: handler.ServeHTTP(w, req)
+C:/Go/src/net/http/server.go:2568 (0x5e6c19)
+	serverHandler.ServeHTTP: handler.ServeHTTP(rw, req)
+C:/Go/src/net/http/server.go:1825 (0x5e3ef9)
+	(*conn).serve: serverHandler{c.server}.ServeHTTP(w, w.req)
+C:/Go/src/runtime/asm_amd64.s:2197 (0x4553a1)
+	goexit: BYTE	$0x90	// NOP
+2017/05/23 16:35:30 POST	/reciever	PushRecieve	7.0033ms	Headers=> | Cache-Control : no-cache | Content-Type : application/xml | Content-Encoding : gzip | User-Agent : PostmanRuntime/3.0.11-hotfix.2 | Content-Length : 70720 | Postman-Token : 649e5431-38e9-4db1-8a69-b951acd61a07 | Accept-Encoding : gzip, deflate, sdch, br | Accept : */* | Connection : keep-alive
+2017/05/23 16:35:45 POST	/reciever	PushRecieve	0s	Headers=> | Postman-Token : ffc4bb8b-63cf-4ce8-bca8-ecfbaa6a7ab8 | User-Agent : PostmanRuntime/3.0.11-hotfix.2 | Accept : */* | Content-Length : 70720 | Connection : keep-alive | Cache-Control : no-cache | Content-Type : application/xml | Accept-Encoding : gzip, deflate, sdch, br

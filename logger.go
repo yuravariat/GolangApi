@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"strings"
 	"time"
 )
 
@@ -13,12 +14,18 @@ func Logger(inner http.Handler, name string) http.Handler {
 
 		inner.ServeHTTP(w, r)
 
+		headers := "Headers=>"
+		for k, v := range r.Header {
+			headers += " | " + k + " : " + strings.Join(v, ",")
+		}
+
 		log.Printf(
-			"%s\t%s\t%s\t%s",
+			"%s\t%s\t%s\t%s\t%s\n",
 			r.Method,
 			r.RequestURI,
 			name,
 			time.Since(start),
+			headers,
 		)
 
 		fmt.Printf(

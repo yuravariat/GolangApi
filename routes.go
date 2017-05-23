@@ -28,6 +28,12 @@ var routes = Routes{
 		controllers.PushRecieve,
 	},
 	Route{
+		"PushRecieve",
+		"PUT",
+		"/reciever",
+		controllers.PushRecieve,
+	},
+	Route{
 		"HotelsIndex",
 		"GET",
 		"/hotels",
