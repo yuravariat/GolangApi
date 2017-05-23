@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"compress/gzip"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -18,22 +17,22 @@ func PushRecieve(w http.ResponseWriter, r *http.Request) {
 	err := func() error {
 
 		// Check that the server actually sent compressed data
-		var reader io.ReadCloser
-		var er error
-		switch r.Header.Get("Content-Encoding") {
-		case "gzip":
-			reader, er = gzip.NewReader(r.Body)
-			if er != nil {
-				return er
-			}
-			defer reader.Close()
-		default:
-			reader = r.Body
-		}
+		// var reader io.ReadCloser
+		// var er error
+		// switch r.Header.Get("Content-Encoding") {
+		// case "gzip":
+		// 	reader, er = gzip.NewReader(r.Body)
+		// 	if er != nil {
+		// 		return er
+		// 	}
+		// 	defer reader.Close()
+		// default:
+		// 	reader = r.Body
+		// }
 
 		//body, er := ioutil.ReadAll(io.LimitReader(r.Body, 1048576))
-		//body, er := ioutil.ReadAll(r.Body)
-		body, er := ioutil.ReadAll(reader)
+		body, er := ioutil.ReadAll(r.Body)
+		//body, er := ioutil.ReadAll(reader)
 		if er != nil {
 			return er
 		}
