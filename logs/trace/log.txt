@@ -62,3 +62,15 @@ C:/Go/src/runtime/asm_amd64.s:2197 (0x4553a1)
 	goexit: BYTE	$0x90	// NOP
 2017/05/23 16:35:30 POST	/reciever	PushRecieve	7.0033ms	Headers=> | Cache-Control : no-cache | Content-Type : application/xml | Content-Encoding : gzip | User-Agent : PostmanRuntime/3.0.11-hotfix.2 | Content-Length : 70720 | Postman-Token : 649e5431-38e9-4db1-8a69-b951acd61a07 | Accept-Encoding : gzip, deflate, sdch, br | Accept : */* | Connection : keep-alive
 2017/05/23 16:35:45 POST	/reciever	PushRecieve	0s	Headers=> | Postman-Token : ffc4bb8b-63cf-4ce8-bca8-ecfbaa6a7ab8 | User-Agent : PostmanRuntime/3.0.11-hotfix.2 | Accept : */* | Content-Length : 70720 | Connection : keep-alive | Cache-Control : no-cache | Content-Type : application/xml | Accept-Encoding : gzip, deflate, sdch, br
+2017/05/24 13:36:18 Server started
+2017/05/24 13:38:17 POST	/reciever	PushRecieve	52.122968s	Headers=> | Content-Length : 1591 | Connection : keep-alive | Cache-Control : no-cache | Content-Type : application/xml | User-Agent : PostmanRuntime/3.0.11-hotfix.2 | Accept : */* | Postman-Token : 5f8e662d-1b6a-4048-862a-8eaaa24a684f | Accept-Encoding : gzip, deflate, sdch, br
+2017/05/25 10:37:31 Server started
+2017/05/25 10:49:49 Server started
+2017/05/25 10:51:42 Server started
+2017/05/25 10:55:27 Server started
+2017/05/25 11:28:44 Server started
+2017/05/25 11:30:34 Server started
+2017/05/25 11:37:42 Server started
+2017/05/25 11:40:53 Server started
+2017/05/25 16:25:19 Server started
+2017/05/25 16:37:56 Server started

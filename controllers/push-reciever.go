@@ -9,6 +9,9 @@ import (
 	"os"
 	"time"
 
+	"GoApi/entities"
+	"encoding/xml"
+
 	"github.com/go-errors/errors"
 )
 
@@ -65,4 +68,11 @@ func pushRecieveWriteFile(content []byte) {
 	defer f.Close()
 
 	f.Write(content)
+}
+func parseHRAXML(content []byte, xmlObj *entities.HRAEnvelope) error {
+
+	if er := xml.Unmarshal(content, &xmlObj); er != nil {
+		return er
+	}
+	return nil
 }

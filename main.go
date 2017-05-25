@@ -17,6 +17,8 @@ func main() {
 	defer f.Close()
 	log.SetOutput(f)
 
+	//entities.ParseXmlTestBookingAmount()
+
 	router := NewRouter()
 	log.Printf("Server started")
 	if err := http.ListenAndServe(":"+strconv.Itoa(common.ServicePortNumber), router); err != nil {
