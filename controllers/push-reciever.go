@@ -12,10 +12,15 @@ import (
 	"GoApi/entities"
 	"encoding/xml"
 
+	"strings"
+
 	"github.com/go-errors/errors"
 )
 
 func PushRecieve(w http.ResponseWriter, r *http.Request) {
+
+	responseType := "OTA_HotelInvCountNotifRS"
+	success := true
 
 	err := func() error {
 
@@ -44,6 +49,14 @@ func PushRecieve(w http.ResponseWriter, r *http.Request) {
 		go pushRecieveWriteFile(body)
 		//fmt.Fprint(w, string(body))
 
+		if strings.Contains(string(body), "OTA_HotelInvCountNotifRQ") {
+			responseType = "OTA_HotelInvCountNotifRS"
+		} else if strings.Contains(string(body), "OTA_HotelBookingRuleNotifRQ") {
+			responseType = "OTA_HotelBookingRuleNotifRS"
+		} else if strings.Contains(string(body), "OTA_HotelRateAmountNotifRQ") {
+			responseType = "OTA_HotelRateAmountNotifRS"
+		}
+
 		return nil
 	}()
 
@@ -52,11 +65,36 @@ func PushRecieve(w http.ResponseWriter, r *http.Request) {
 		serr := errors.Wrap(err, 1)
 		log.Printf(serr.ErrorStack())
 		io.WriteString(w, err.Error())
-		return
+		success = false
 	}
 
-	//w.Header().Set("Content-Type", "application/json; charset=UTF-8")
-	fmt.Fprint(w, "{\"success\":\"true\"}")
+	w.Header().Set("Content-Type", "text/xml")
+
+	responseBody := "<Success/>"
+	if !success {
+		responseBody = `<Errors>
+		<Error Type="Unknown">
+			` + err.Error() + `
+		<Error>
+		</Errors>`
+	}
+	response := `<Envelope 
+		xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" 
+		xmlns:ns1="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+		xmlns:ns2="http://www.w3.org/2005/08/addressing" 
+		xmlns:ns3="http://www.opentravel.org/OTA/2003/05">
+	<Header>
+		<MessageID>uuid:82e8a910-e7f1-2044-d8f0-d69493a35126</MessageID>
+		<RelatesTo>0</RelatesTo>
+	</Header>
+	<Body>
+		<` + responseType + ` TimeStamp="` + time.Now().Format(time.RFC3339) + `">
+		` + responseBody + `
+		</` + responseType + `>
+	</Body>
+	</Envelope>`
+
+	fmt.Fprint(w, response)
 }
 func pushRecieveWriteFile(content []byte) {
 

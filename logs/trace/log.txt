@@ -74,3 +74,11 @@ C:/Go/src/runtime/asm_amd64.s:2197 (0x4553a1)
 2017/05/25 11:40:53 Server started
 2017/05/25 16:25:19 Server started
 2017/05/25 16:37:56 Server started
+2017/05/28 11:52:59 Server started
+2017/05/28 11:53:17 POST	/reciever	PushRecieve	501.2µs	Headers=> | Accept : */* | Connection : keep-alive | Content-Type : application/xml | Accept-Encoding : gzip, deflate, sdch, br | User-Agent : PostmanRuntime/3.0.11-hotfix.2 | Cache-Control : no-cache | Postman-Token : 5145db59-5a68-4d45-8cb4-645a6ee0d34d | Content-Length : 1593
+2017/05/28 11:54:02 Server started
+2017/05/28 11:54:10 POST	/reciever	PushRecieve	500.3µs	Headers=> | Content-Length : 1593 | Accept-Encoding : gzip, deflate, sdch, br | Postman-Token : 4770918c-3fa1-48a5-95e8-a5dd0f6efc84 | Content-Type : application/xml | User-Agent : PostmanRuntime/3.0.11-hotfix.2 | Accept : */* | Connection : keep-alive | Cache-Control : no-cache
+2017/05/28 11:55:02 Server started
+2017/05/28 11:55:11 POST	/reciever	PushRecieve	500.4µs	Headers=> | User-Agent : PostmanRuntime/3.0.11-hotfix.2 | Cache-Control : no-cache | Postman-Token : f8b4732f-8d76-4ddc-85ff-aade8347cbb4 | Content-Type : application/xml | Connection : keep-alive | Accept-Encoding : gzip, deflate, sdch, br | Accept : */* | Content-Length : 1593
+2017/05/28 12:15:00 Server started
+2017/05/28 12:15:08 POST	/reciever	PushRecieve	0s	Headers=> | Content-Type : application/xml | User-Agent : PostmanRuntime/3.0.11-hotfix.2 | Accept : */* | Connection : keep-alive | Cache-Control : no-cache | Postman-Token : 9e2aeb83-293f-4810-9038-6c64896175d4 | Accept-Encoding : gzip, deflate, sdch, br | Content-Length : 1593
