@@ -55,21 +55,21 @@ type HRAAddress struct {
 
 // HRABody ...
 type HRABody struct {
-	HotelRateAmount []HotelRateAmount `xml:"http://www.opentravel.org/OTA/2003/05 OTA_HotelRateAmountNotifRQ,omitempty" json:"OTA_HotelRateAmountNotifRQ,omitempty"`
-	XMLName         xml.Name          `xml:"http://schemas.xmlsoap.org/soap/envelope/ Body,omitempty" json:"Body,omitempty"`
+	HotelRateAmount []*HotelRateAmount `xml:"http://www.opentravel.org/OTA/2003/05 OTA_HotelRateAmountNotifRQ,omitempty" json:"OTA_HotelRateAmountNotifRQ,omitempty"`
+	XMLName         xml.Name           `xml:"http://schemas.xmlsoap.org/soap/envelope/ Body,omitempty" json:"Body,omitempty"`
 }
 
 // HotelRateAmount ...
 type HotelRateAmount struct {
-	HRARateAmountMessages []HRARateAmountMessages `xml:"http://www.opentravel.org/OTA/2003/05 RateAmountMessages,omitempty" json:"RateAmountMessages,omitempty"`
-	XMLName               xml.Name                `xml:"http://www.opentravel.org/OTA/2003/05 OTA_HotelRateAmountNotifRQ,omitempty" json:"OTA_HotelRateAmountNotifRQ,omitempty"`
+	HRARateAmountMessages []*HRARateAmountMessages `xml:"http://www.opentravel.org/OTA/2003/05 RateAmountMessages,omitempty" json:"RateAmountMessages,omitempty"`
+	XMLName               xml.Name                 `xml:"http://www.opentravel.org/OTA/2003/05 OTA_HotelRateAmountNotifRQ,omitempty" json:"OTA_HotelRateAmountNotifRQ,omitempty"`
 }
 
 // HRARateAmountMessages ...
 type HRARateAmountMessages struct {
-	HotelCode            string                 `xml:" HotelCode,attr"  json:",omitempty"`
-	HRARateAmountMessage []HRARateAmountMessage `xml:"http://www.opentravel.org/OTA/2003/05 RateAmountMessage,omitempty" json:"RateAmountMessage,omitempty"`
-	XMLName              xml.Name               `xml:"http://www.opentravel.org/OTA/2003/05 RateAmountMessages,omitempty" json:"RateAmountMessages,omitempty"`
+	HotelCode            string                  `xml:" HotelCode,attr"  json:",omitempty"`
+	HRARateAmountMessage []*HRARateAmountMessage `xml:"http://www.opentravel.org/OTA/2003/05 RateAmountMessage,omitempty" json:"RateAmountMessage,omitempty"`
+	XMLName              xml.Name                `xml:"http://www.opentravel.org/OTA/2003/05 RateAmountMessages,omitempty" json:"RateAmountMessages,omitempty"`
 }
 
 // HRARateAmountMessage ...
@@ -97,8 +97,8 @@ type HRAStatusApplicationControl struct {
 
 // HRARates ...
 type HRARates struct {
-	HRARate []HRARate `xml:"http://www.opentravel.org/OTA/2003/05 Rate,omitempty" json:"Rate,omitempty"`
-	XMLName xml.Name  `xml:"http://www.opentravel.org/OTA/2003/05 Rates,omitempty" json:"Rates,omitempty"`
+	HRARate []*HRARate `xml:"http://www.opentravel.org/OTA/2003/05 Rate,omitempty" json:"Rate,omitempty"`
+	XMLName xml.Name   `xml:"http://www.opentravel.org/OTA/2003/05 Rates,omitempty" json:"Rates,omitempty"`
 }
 
 // HRARate ...

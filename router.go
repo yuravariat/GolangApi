@@ -23,5 +23,8 @@ func NewRouter() *mux.Router {
 
 	}
 
+	// This will serve files under http://localhost:8000/<filename>
+	router.PathPrefix("/").Handler(http.StripPrefix("/", http.FileServer(http.Dir("./"))))
+
 	return router
 }

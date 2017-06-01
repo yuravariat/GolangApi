@@ -24,6 +24,8 @@ func PushRecieve(w http.ResponseWriter, r *http.Request) {
 
 	err := func() error {
 
+		w.Header().Set("Content-Type", "text/xml")
+
 		// Check that the server actually sent compressed data
 		// var reader io.ReadCloser
 		// var er error
@@ -46,7 +48,8 @@ func PushRecieve(w http.ResponseWriter, r *http.Request) {
 		}
 
 		// write file in background thread
-		go pushRecieveWriteFile(body)
+		uuidStr := r.Context().Value("uuid").(string)
+		go pushRecieveWriteFile(body, uuidStr)
 		//fmt.Fprint(w, string(body))
 
 		if strings.Contains(string(body), "OTA_HotelInvCountNotifRQ") {
@@ -67,8 +70,6 @@ func PushRecieve(w http.ResponseWriter, r *http.Request) {
 		io.WriteString(w, err.Error())
 		success = false
 	}
-
-	w.Header().Set("Content-Type", "text/xml")
 
 	responseBody := "<Success/>"
 	if !success {
@@ -96,9 +97,9 @@ func PushRecieve(w http.ResponseWriter, r *http.Request) {
 
 	fmt.Fprint(w, response)
 }
-func pushRecieveWriteFile(content []byte) {
+func pushRecieveWriteFile(content []byte, uuidStr string) {
 
-	f, er := os.Create("./logs/requests/recived_" + time.Now().Format("2006-01-02_15-04-04_05Z07.00") + ".xml")
+	f, er := os.Create("./logs/requests/recived_" + time.Now().Format("2006-01-02_15-04-04_05Z07.00") + "-" + uuidStr + ".xml")
 	if er != nil {
 		serr := errors.Wrap(er, 1)
 		log.Printf(serr.ErrorStack())

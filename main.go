@@ -18,8 +18,11 @@ func main() {
 	log.SetOutput(f)
 
 	//entities.ParseXmlTestBookingAmount()
+	//entities.ParseXmlTestInvCount()
+	//entities.ParseXmlTestBookingRules()
 
 	router := NewRouter()
+
 	log.Printf("Server started")
 	if err := http.ListenAndServe(":"+strconv.Itoa(common.ServicePortNumber), router); err != nil {
 		log.Fatal(err)
