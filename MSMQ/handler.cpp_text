@@ -1,0 +1,64 @@
+HRESULT SendMessage(
+    WCHAR *wszComputerName,  
+    WCHAR *wszQueueName  
+)  
+{  
+  HRESULT hr = S_OK;  
+  WCHAR * wszFormatName = NULL;  
+  
+  // Validate the input strings.  
+  if (wszComputerName == NULL || wszQueueName == NULL)  
+  {  
+    return MQ_ERROR_INVALID_PARAMETER;  
+  }  
+  try  
+  {  
+    IMSMQQueueInfoPtr pInfo("MSMQ.MSMQQueueInfo");  
+    IMSMQQueuePtr     pQueue;  
+    IMSMQMessagePtr   pMsg("MSMQ.MSMQMessage");  
+    WCHAR   *wszFormatNamePrefix = L"DIRECT=OS:";  
+    int     nFormatNamePrefixLen = 0;  
+    int     nComputerNameLen = 0;  
+    int     nQueueNameLen = 0;  
+    int     nFormatNameLen = 0;  
+  
+    // Create a direct format name of the queue, and  
+    // set the FormatName property of the MSMQQueueInfo object.  
+    nFormatNamePrefixLen = wcslen(wszFormatNamePrefix);  
+    nComputerNameLen = wcslen(wszComputerName);  
+    nQueueNameLen = wcslen(wszQueueName);  
+    nFormatNameLen = nFormatNamePrefixLen + nComputerNameLen + nQueueNameLen + 2;  
+    wszFormatName = new WCHAR[nFormatNameLen];  
+    if (wszFormatName)  
+    {  
+      memset(wszFormatName, 0, nFormatNameLen*sizeof(WCHAR));  
+      // ************************************  
+      // You must concatenate wszFormatNamePrefix, wszComputerName,   
+      //"\", and wszQueueName into the wszFormatName buffer.  
+      // wszFormatName = wszFormatNamePrefix + wszComputerName +  
+      // "\" + wszQueueName  
+      // ************************************  
+      pInfo->FormatName = wszFormatName;     
+    }  
+  
+    // Open the queue.  
+    pQueue = pInfo->Open(MQ_SEND_ACCESS, MQ_DENY_NONE);  
+  
+    pMsg->Label = "Test Message";   
+    pMsg->Send(pQueue);  
+  
+    pQueue->Close();  
+  
+    printf("The following message was sent successfully to queue %s\n", (TCHAR *)pInfo->PathName);  
+  }  
+  catch (const _com_error& comerr)   
+  {  
+    hr = comerr.Error();  
+    wprintf(L"Error Code = 0x%X\nError Description = %s\n", hr, (WCHAR *)comerr.Description());  
+  }  
+  if (wszFormatName)  
+  {  
+    delete [] wszFormatName;  
+  }  
+  return hr;  
+}
